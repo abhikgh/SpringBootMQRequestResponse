@@ -1,0 +1,28 @@
+server: 
+    port: 9091
+              
+spring: 
+  application:
+    name: SpringBootMQ
+   
+camel:
+  springboot:
+    main-run-controller: true
+    
+ibm.mq: 
+  queueManager: ABHIKTESTQM
+  channel: CLOUD.ADMIN.SVRCONN
+  connName: abhiktestqm-ff9e.qm.eu-gb.mq.appdomain.cloud(32503)
+  user: ghosha24
+  password: pceI1ObgLP4EzuDWfkPJG7z09WOeD1zh7KX_oV59R1hx
+  timeout: 60000
+  maxAttempts: 3
+  receiveTimeout : 5000
+  userAuthentication: true
+  transportType: 1
+  appRequestQueue: APP.REQUEST.Q
+  appResponseQueue: APP.RESPONSE.Q
+              
+log:
+  location: logs
+ 

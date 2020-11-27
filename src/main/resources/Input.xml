@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppData>
+	<Conversion>
+		<Celsius>40</Celsius>
+		<Farenheit></Farenheit>
+		<Miles>124</Miles>
+		<Kilometer></Kilometer>
+		<Kilogram>23</Kilogram>
+		<Pound></Pound>
+	</Conversion>
+	<Other>
+		<ServiceIP></ServiceIP>
+		<ServiceTime></ServiceTime>
+	</Other>
+</AppData>

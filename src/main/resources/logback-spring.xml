@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <springProperty scope="context" name="log-location" source="log.location"/>
+    <springProperty scope="context" name="app-name" source="spring.application.name"/>
+
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--<prudent>true</prudent>-->
+        <file>${log-location}/${app-name}.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+
+            <!-- daily rollover -->
+            <fileNamePattern>${log-location}/${app-name}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+            <maxFileSize>5MB</maxFileSize>
+            <maxHistory>20</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d] [%-5level] [%thread] [%logger{35}] - [sfg-gtid=%X{sfgGtid}, actor=%logger{0}, sfg-service=%X{serviceName}, sfg-service-version=%X{serviceVersion}, operation=%method, %msg]%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.standard" additivity="false" level="debug">
+        <appender-ref ref="ROLLING"/>
+    </logger>
+    <logger name="org.springframework.vault" additivity="false" level="debug">
+        <appender-ref ref="ROLLING"/>
+    </logger>
+    <root level="INFO">
+        <appender-ref ref="ROLLING"/>
+    </root>
+</configuration>
